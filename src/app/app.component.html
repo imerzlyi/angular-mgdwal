@@ -1,0 +1,105 @@
+<div>
+  <label>n:</label><input type="number" [(ngModel)]="n"/>
+</div>
+<div>
+  <label>m:</label><input type="number" [(ngModel)]="m"/>
+</div>
+<div>
+  <button (click)="onClick()">Gen</button>
+</div>
+<table>
+  <tr>
+    <td>Y/X</td>
+    <td>
+      <table>
+        <tr>
+          <td *ngFor="let col of mRange">
+            <input type="number" [(ngModel)]="x[col]"/>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table>
+        <tr *ngFor="let row of nRange">
+          <td>
+            <input type="number" [(ngModel)]="y[row]"/>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <table>
+        <tr *ngFor="let row of nRange">
+          <td *ngFor="let col of mRange">
+            <input type="number" [(ngModel)]="matrix[row][col]"/>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<hr/>
+<div>
+  <button (click)="solve()">Solve</button>
+</div>
+<hr/>
+<p *ngFor="let y of yx; let i = index">
+  ~y(x{{i}})={{y}}
+</p>
+<hr>
+<p *ngFor="let x of xy; let i = index">
+  ~x(y{{i}})={{x}}
+</p>
+<hr>
+<p>
+  ny={{ny}}; ny_sum={{ny_sum}}
+</p>
+<p>
+  nx={{nx}}; nx_sum={{nx_sum}}
+</p>
+<p>
+  ~y={{yy}}
+</p>
+<p>
+  ~x={{xx}}
+</p>
+<p>
+  ~y^2={{yy2}}
+</p>
+<p>
+  ~x^2={{xx2}}
+</p>
+<p>
+  (sigma x)^2={{s2x}}
+</p>
+<p>
+  (sigma y)^2={{s2y}}
+</p>
+<p>
+  (sigma x)={{sx}}
+</p>
+<p>
+  (sigma y)={{sy}}
+</p>
+<p>
+  sum = {{sm}}
+</p>
+<p>
+  r xy = {{rxy}}
+</p>
+<hr>
+<p>
+  a*{{a1}}+b*{{b1}}={{c1}}
+</p>
+<p>
+  a*{{a2}}+b*{{b2}}={{c2}}
+</p>
+<p>
+  a = {{valA}}
+</p>
+<p>
+  b = {{valB}}
+</p>
