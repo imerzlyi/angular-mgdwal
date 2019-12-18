@@ -8,98 +8,96 @@
   <button (click)="onClick()">Gen</button>
 </div>
 <table>
-  <tr>
-    <td>Y/X</td>
-    <td>
-      <table>
-        <tr>
-          <td *ngFor="let col of mRange">
-            <input type="number" [(ngModel)]="x[col]"/>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <table>
-        <tr *ngFor="let row of nRange">
-          <td>
-            <input type="number" [(ngModel)]="y[row]"/>
-          </td>
-        </tr>
-      </table>
-    </td>
-    <td>
-      <table>
         <tr *ngFor="let row of nRange">
           <td *ngFor="let col of mRange">
             <input type="number" [(ngModel)]="matrix[row][col]"/>
           </td>
         </tr>
-      </table>
-    </td>
-  </tr>
 </table>
 <hr/>
 <div>
   <button (click)="solve()">Solve</button>
 </div>
 <hr/>
-<p *ngFor="let y of yx; let i = index">
-  ~y(x{{i}})={{y}}
-</p>
-<hr>
-<p *ngFor="let x of xy; let i = index">
-  ~x(y{{i}})={{x}}
-</p>
-<hr>
+<table>
+  <tr>
+    <th>N</th>
+    <th *ngFor="let F of mRange" colspan="2">
+      F{{F+1}}
+    </th>
+  </tr>
+  <tr>
+    <th>
+    </th>
+    <ng-container *ngFor="let F of mRange">
+      <th>
+        Xi
+      </th>
+      <th>
+        X<sub>i,{{F+1}}</sub><sup>2</sup>
+      </th>
+    </ng-container>
+  </tr>
+  <tr *ngFor="let row of nRange">
+    <td>{{row}}</td>
+    <ng-container *ngFor="let col of mRange">
+      <td>
+        {{matrix[row][col]}}
+      </td>
+      <td>
+        {{matrix2[row][col]}}
+      </td>
+    </ng-container>
+  </tr>
+  <tr>
+    <td>
+      ~X
+    </td>
+    <ng-container *ngFor="let col of mRange">
+      <td>
+        {{xx[col]}}
+      </td>
+      <td>
+      </td>
+    </ng-container>
+  </tr>
+  <tr>
+    <td>
+      Sum(X)
+    </td>
+    <ng-container *ngFor="let col of mRange">
+      <td>
+        {{xs[col]}}
+      </td>
+      <td>
+      </td>
+    </ng-container>
+  </tr>
+  <tr>
+    <td>
+      Sum(X<sup>2</sup>)
+    </td>
+    <ng-container *ngFor="let col of mRange">
+      <td>
+      </td>
+      <td>
+        {{xs2[col]}}
+      </td>
+    </ng-container>
+  </tr>
+</table>
 <p>
-  ny={{ny}}; ny_sum={{ny_sum}}
+  SS<sub>1</sub>={{ss1}}
 </p>
 <p>
-  nx={{nx}}; nx_sum={{nx_sum}}
+  SS<sub>2</sub>={{ss2}}
 </p>
 <p>
-  ~y={{yy}}
+  Df={{df}}, k<sub>1</sub>={{k1}}
 </p>
 <p>
-  ~x={{xx}}
+  Ds={{ds}}, k<sub>2</sub>={{k2}}
 </p>
 <p>
-  ~y^2={{yy2}}
-</p>
-<p>
-  ~x^2={{xx2}}
-</p>
-<p>
-  (sigma x)^2={{s2x}}
-</p>
-<p>
-  (sigma y)^2={{s2y}}
-</p>
-<p>
-  (sigma x)={{sx}}
-</p>
-<p>
-  (sigma y)={{sy}}
-</p>
-<p>
-  sum = {{sm}}
-</p>
-<p>
-  r xy = {{rxy}}
-</p>
-<hr>
-<p>
-  a*{{a1}}+b*{{b1}}={{c1}}
-</p>
-<p>
-  a*{{a2}}+b*{{b2}}={{c2}}
-</p>
-<p>
-  a = {{valA}}
-</p>
-<p>
-  b = {{valB}}
+  F={{f}}
 </p>
